@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Modern Saya</title>
+    <title>Portofolio Digital Modern | Perbaikan Typo</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* --- RESET & DASAR --- */
         * {
             margin: 0;
             padding: 0;
@@ -18,63 +20,67 @@
             background: #0f172a;
             color: white;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND DECORATION --- */
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            filter: blur(120px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.15;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, 10%); }
+            to { transform: translate(80%, 40%); }
         }
 
         /* --- NAVBAR --- */
         nav {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
+            padding: 20px 8%;
             background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 20px 0;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 600;
+        .logo { font-size: 24px; font-weight: 600; }
+        .logo span { 
             background: linear-gradient(to right, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: #94a3b8;
+        nav ul { display: flex; list-style: none; gap: 10px; align-items: center; }
+        nav ul li a {
+            color: #cbd5e1;
             text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            transition: 0.3s;
             font-size: 0.95rem;
-            transition: 0.3s;
-            position: relative;
         }
+        nav ul li a:hover:not(.nav-btn) { background: rgba(56, 189, 248, 0.1); color: white; }
 
-        nav a:hover {
-            color: white;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
+        .nav-btn {
             background: #38bdf8;
-            bottom: -5px;
-            left: 0;
-            transition: 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+            color: #0f172a !important;
+            font-weight: 600;
+            border-radius: 50px !important;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
         }
 
         /* --- HERO SECTION --- */
@@ -86,99 +92,130 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            
-            /* Background Image dengan Overlay Gelap */
-            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), 
-                              url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.85)), 
+                              url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1352&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Efek Parallax */
+            background-attachment: fixed;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem); /* Ukuran teks responsif */
+        .hero h1 { 
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
             margin-bottom: 20px;
-            font-weight: 600;
-            animation: fadeInDown 1s ease;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: #cbd5e1;
-            max-width: 700px;
-            margin-bottom: 35px;
-            animation: fadeInUp 1s ease 0.3s;
-            animation-fill-mode: both;
-        }
+        .hero p { color: #94a3b8; max-width: 700px; margin-bottom: 40px; font-size: 1.1rem; }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 35px;
+        .btn-glow {
+            padding: 16px 40px;
             background: #38bdf8;
             color: #0f172a;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 50px;
             font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.5);
-            animation: fadeInUp 1s ease 0.6s;
-            animation-fill-mode: both;
+            transition: 0.4s;
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            background: #7dd3fc;
-            box-shadow: 0 20px 30px -10px rgba(56, 189, 248, 0.6);
+        .btn-glow:hover {
+            transform: scale(1.05);
+            background: white;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
         }
+
+        /* --- SERVICES SECTION --- */
+        .features { padding: 100px 8%; position: relative; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title .line { width: 70px; height: 4px; background: #38bdf8; margin: 0 auto; border-radius: 10px; }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover {
+            transform: translateY(-15px) rotate(1deg);
+            border-color: #38bdf8;
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .card i { font-size: 2.5rem; color: #38bdf8; margin-bottom: 25px; }
 
         /* --- FOOTER --- */
         footer {
-            padding: 50px 0;
+            padding: 60px 0;
             text-align: center;
             background: #020617;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: #64748b;
         }
 
-        /* --- ANIMASI --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsif untuk Mobile */
         @media (max-width: 768px) {
-            nav ul { display: none; } /* Sederhanakan menu untuk mobile */
-            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+            .hero h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
 <body>
 
+    <div class="blob"></div>
+
     <nav>
-        <div class="logo">PORTFOLIO.</div>
+        <div class="logo">FUTURE<span>WEB</span></div>
         <ul>
             <li><a href="#">Beranda</a></li>
-            <li><a href="#">Tentang</a></li>
-            <li><a href="#">Layanan</a></li>
-            <li><a href="#">Kontak</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#">Proyek</a></li>
+            <li><a href="#" class="nav-btn">Kontak Kami</a></li>
         </ul>
     </nav>
 
     <header class="hero">
-        <h1>Desain Masa Depan</h1>
-        <p>Kombinasi antara estetika dan fungsionalitas untuk membangun pengalaman digital yang tak terlupakan.</p>
-        <a href="#explore" class="btn">Jelajahi Proyek</a>
+        <h1>Membangun Masa Depan</h1>
+        <p>Kami membantu Anda mewujudkan ide digital menjadi kenyataan dengan desain futuristik dan performa teknologi tinggi.</p>
+        <a href="#services" class="btn-glow">Mulai Eksplorasi</a>
     </header>
 
+    <section class="features" id="services">
+        <div class="section-title">
+            <h2>Layanan Kami</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="grid-features">
+            <div class="card">
+                <i class="fas fa-rocket"></i>
+                <h3>Performa Tinggi</h3>
+                <p>Website super cepat yang dioptimalkan untuk pengalaman pengguna terbaik di semua perangkat.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Desain Kreatif</h3>
+                <p>Visual yang memukau dan unik, disesuaikan dengan identitas dan karakter brand Anda.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-code"></i>
+                <h3>Kode Bersih</h3>
+                <p>Struktur kode yang rapi dan standar industri, memudahkan pengembangan di masa depan.</p>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2026 BrandKamu. All rights reserved.</p>
-        <p style="font-size: 0.8rem; margin-top: 10px;">Build with HTML & CSS</p>
+        <p>&copy; 2026 FutureWeb Studio. Semua hak cipta dilindungi.</p>
     </footer>
 
 </body>
