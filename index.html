@@ -11,24 +11,24 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
+            background: #0f172a;
             color: white;
+            line-height: 1.6;
         }
 
-        /* Navbar Keren dengan Efek Glassmorphism */
+        /* --- NAVBAR --- */
         nav {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px); /* Efek blur kaca */
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
             padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -37,8 +37,9 @@
         .logo {
             font-size: 24px;
             font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         nav ul {
@@ -48,61 +49,93 @@
         }
 
         nav a {
-            color: white;
+            color: #94a3b8;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 300;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        /* Efek garis bawah saat hover */
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: #ff7eb3;
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s ease;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: #ff7eb3;
+            color: white;
         }
 
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .content {
-            padding: 50px;
+        /* --- HERO SECTION (NEW FEAT) --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.4);
+        }
+
+        /* --- FOOTER (NEW FEAT) --- */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            background: #020617;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">MYBRAND</div>
+        <div class="logo">TECHLAB</div>
         <ul>
             <li><a href="#">Beranda</a></li>
-            <li><a href="#">Tentang</a></li>
-            <li><a href="#">Portofolio</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#">Proyek</a></li>
             <li><a href="#">Kontak</a></li>
         </ul>
     </nav>
 
-    <div class="content">
-        <h1>Selamat Datang</h1>
-        <p>Ini adalah tampilan website dengan navbar yang lebih modern.</p>
-    </div>
+    <section class="hero">
+        <h1>Bangun Masa Depan</h1>
+        <p>Belajar coding dengan cara yang menyenangkan dan membangun portofolio yang luar biasa bersama kami.</p>
+        <a href="#about" class="btn">Mulai Belajar</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 TechLab. Dibuat dengan semangat belajar.</p>
+    </footer>
 
 </body>
 </html>
