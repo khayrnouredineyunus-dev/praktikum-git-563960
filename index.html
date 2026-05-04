@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar Web Modern</title>
+    <title>Portofolio Digital Modern</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #0f172a;
+            --card-bg: rgba(15, 23, 42, 0.05);
+            --nav-bg: rgba(255, 255, 255, 0.8);
+            --primary: #38bdf8;
+            --input-bg: #f8fafc;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #ffffff;
+            --card-bg: rgba(30, 41, 59, 0.5);
+            --nav-bg: rgba(15, 23, 42, 0.8);
+            --input-bg: rgba(255, 255, 255, 0.05);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,127 +33,342 @@
         }
 
         body {
-            background: #0f172a;
-            color: white;
+            background: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* --- NAVBAR --- */
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%);
+            filter: blur(120px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.15;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, 10%); }
+            to { transform: translate(80%, 40%); }
+        }
+
         nav {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
+            padding: 20px 8%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 600;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
+        .logo { font-size: 24px; font-weight: 600; }
+        .logo span { 
+            background: linear-gradient(to right, var(--primary), #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: #94a3b8;
+        nav ul { display: flex; list-style: none; gap: 15px; align-items: center; }
+        nav ul li a {
+            color: var(--text-color);
             text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 8px;
             transition: 0.3s;
+            font-size: 0.95rem;
         }
 
-        nav a:hover {
-            color: white;
+        nav ul li a:hover:not(.nav-btn) { background: rgba(56, 189, 248, 0.1); }
+
+        .theme-switch {
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            color: var(--text-color);
+            transition: 0.3s ease;
         }
 
-        /* --- HERO SECTION (NEW FEAT) --- */
+        .nav-btn {
+            background: var(--primary);
+            color: #0f172a !important;
+            font-weight: 600;
+            border-radius: 50px !important;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
+            filter: brightness(1.1);
+        }
+
         .hero {
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), 
+                              url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1352&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        .hero h1 {
-            font-size: 4rem;
+        .hero h1 { 
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
             margin-bottom: 20px;
-            animation: fadeIn 1.5s ease;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
+        .hero p { color: #cbd5e1; max-width: 700px; margin-bottom: 40px; font-size: 1.1rem; }
 
-        .btn {
-            padding: 12px 30px;
-            background: #38bdf8;
+        .btn-glow {
+            padding: 16px 40px;
+            background: var(--primary);
             color: #0f172a;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.1);
+            background: white;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+        }
+
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title .line { width: 70px; height: 4px; background: var(--primary); margin: 0 auto; border-radius: 10px; }
+
+        .features { padding: 100px 8%; }
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; transition: 0.3s; }
+        .card:hover i { transform: scale(1.2) rotate(10deg); }
+
+        .portfolio { padding: 100px 8%; background: var(--bg-color); }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background: #1e293b;
+        }
+
+        .project-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .project-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .project-card:hover img { transform: scale(1.1); }
+        .project-card:hover .project-overlay { opacity: 1; }
+
+        .contact { padding: 100px 8%; background: var(--bg-color); }
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            background: var(--input-bg);
+            color: var(--text-color);
+            outline: none;
             transition: 0.3s;
-            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.4);
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: #0f172a;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        /* --- FOOTER (NEW FEAT) --- */
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(56, 189, 248, 0.3); }
+
         footer {
-            padding: 40px 0;
+            padding: 60px 0;
             text-align: center;
             background: #020617;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: #64748b;
-            font-size: 0.9rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
+
+    <div class="blob"></div>
 
     <nav>
-        <div class="logo">TECHLAB</div>
+        <div class="logo">FUTURE<span>WEB</span></div>
         <ul>
             <li><a href="#">Beranda</a></li>
-            <li><a href="#about">Tentang</a></li>
-            <li><a href="#">Proyek</a></li>
-            <li><a href="#">Kontak</a></li>
+            <li><a href="#projects">Proyek</a></li>
+            <li><a href="#contact">Kontak</a></li>
+            <div class="theme-switch" id="theme-toggle"><i class="fas fa-moon"></i></div>
+            <li><a href="#contact" class="nav-btn">Mulai Proyek</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>Bangun Masa Depan</h1>
-        <p>Belajar coding dengan cara yang menyenangkan dan membangun portofolio yang luar biasa bersama kami.</p>
-        <a href="#about" class="btn">Mulai Belajar</a>
+    <header class="hero">
+        <h1>Membangun Masa Depan</h1>
+        <p>Wujudkan ide digital Anda menjadi kenyataan dengan desain futuristik dan teknologi tinggi.</p>
+        <a href="#projects" class="btn-glow">Eksplorasi Sekarang</a>
+    </header>
+
+    <section class="features" id="services">
+        <div class="section-title">
+            <h2>Layanan Kami</h2>
+            <div class="line"></div>
+        </div>
+        <div class="grid-features">
+            <div class="card"><i class="fas fa-rocket"></i><h3>Performa Tinggi</h3><p>Website super cepat yang dioptimalkan untuk pengalaman terbaik.</p></div>
+            <div class="card"><i class="fas fa-paint-brush"></i><h3>Desain Kreatif</h3><p>Visual memukau yang disesuaikan dengan identitas unik brand Anda.</p></div>
+            <div class="card"><i class="fas fa-code"></i><h3>Kode Bersih</h3><p>Struktur kode yang rapi untuk skalabilitas masa depan.</p></div>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 TechLab. Dibuat dengan semangat belajar.</p>
-    </footer>
+    <section class="portfolio" id="projects">
+        <div class="section-title">
+            <h2>Proyek Terbaru</h2>
+            <div class="line"></div>
+        </div>
+        <div class="portfolio-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80">
+                <div class="project-overlay"><h4>E-Commerce Platform</h4><p>Sistem pembayaran terintegrasi.</p></div>
+            </div>
+            <div class="project-card">
+                <!-- LINK GAMBAR DATA VISUALIZATION DIPERBAIKI -->
+                <img src="https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800&q=80">
+                <div class="project-overlay"><h4>Data Visualization</h4><p>Dashboard trafik real-time.</p></div>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80">
+                <div class="project-overlay"><h4>Mobile Application</h4><p>App manajemen keuangan modern.</p></div>
+            </div>
+        </div>
+    </section>
 
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Hubungi Kami</h2>
+            <div class="line"></div>
+        </div>
+        <div class="contact-container">
+            <form action="#">
+                <div class="form-group"><label>Nama Lengkap</label><input type="text" placeholder="Masukkan nama Anda..."></div>
+                <div class="form-group"><label>Email</label><input type="email" placeholder="email@contoh.com"></div>
+                <div class="form-group"><label>Pesan</label><textarea rows="5" placeholder="Apa yang bisa kami bantu?"></textarea></div>
+                <button type="submit" class="submit-btn">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <footer><p>&copy; 2026 FutureWeb Studio. All rights reserved.</p></footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        } else if (systemPrefersDark) {
+            body.setAttribute('data-theme', 'dark');
+            updateIcon('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+    </script>
 </body>
 </html>
