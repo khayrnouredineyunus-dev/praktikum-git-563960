@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar Web Modern</title>
+    <title>Web Portofolio Interaktif</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <style>
+        /* --- RESET & BASE --- */
         * {
             margin: 0;
             padding: 0;
@@ -18,123 +19,187 @@
             background: #0f172a;
             color: white;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- NAVBAR --- */
+        /* --- NAVBAR INTERAKTIF (Glassmorphism) --- */
         nav {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
+            padding: 20px 8%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
+            transition: 0.4s;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: #38bdf8;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 10px;
+            align-items: center;
         }
 
-        nav a {
-            color: #94a3b8;
+        nav ul li a {
+            color: #cbd5e1;
             text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        /* Hover Effect: Pill Background */
+        nav ul li a:hover:not(.nav-btn) {
+            color: white;
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* Hover Effect: Animated Underline */
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
             transition: 0.3s;
         }
 
-        nav a:hover {
-            color: white;
+        nav ul li a:hover::after {
+            width: 50%;
         }
 
-        /* --- HERO SECTION (NEW FEAT) --- */
+        /* Call to Action Button di Nav */
+        .nav-btn {
+            background: #38bdf8;
+            color: #0f172a !important;
+            font-weight: 600;
+            border-radius: 50px !important;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+        }
+
+        .nav-btn:hover {
+            background: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        /* --- HERO SECTION --- */
         .hero {
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), 
+                              url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1352&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             margin-bottom: 20px;
-            animation: fadeIn 1.5s ease;
+            animation: fadeInDown 1s ease;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            max-width: 600px;
-            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin-bottom: 35px;
+            animation: fadeInUp 1s ease 0.3s both;
         }
 
-        .btn {
-            padding: 12px 30px;
+        .hero .btn-main {
+            padding: 15px 40px;
             background: #38bdf8;
             color: #0f172a;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             font-weight: 600;
             transition: 0.3s;
-            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4);
+            animation: fadeInUp 1s ease 0.6s both;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.4);
+        .hero .btn-main:hover {
+            transform: scale(1.05);
+            background: white;
         }
 
-        /* --- FOOTER (NEW FEAT) --- */
+        /* --- FOOTER --- */
         footer {
-            padding: 40px 0;
+            padding: 60px 0;
             text-align: center;
             background: #020617;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: #64748b;
-            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            nav { padding: 15px 5%; }
+            nav ul { display: none; }
+            .hero h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">TECHLAB</div>
+    <nav id="navbar">
+        <div class="logo">CREATIVE<span>LAB</span></div>
         <ul>
             <li><a href="#">Beranda</a></li>
-            <li><a href="#about">Tentang</a></li>
             <li><a href="#">Proyek</a></li>
-            <li><a href="#">Kontak</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#" class="nav-btn">Mulai Proyek</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>Bangun Masa Depan</h1>
-        <p>Belajar coding dengan cara yang menyenangkan dan membangun portofolio yang luar biasa bersama kami.</p>
-        <a href="#about" class="btn">Mulai Belajar</a>
-    </section>
+    <header class="hero">
+        <h1>Inovasi Tanpa Batas</h1>
+        <p>Kami membantu membangun ide digital Anda menjadi kenyataan dengan desain interaktif dan teknologi terkini.</p>
+        <a href="#" class="btn-main">Lihat Portofolio</a>
+    </header>
 
     <footer>
-        <p>&copy; 2026 TechLab. Dibuat dengan semangat belajar.</p>
+        <p>&copy; 2026 CreativeLab Digital. Build with passion.</p>
     </footer>
 
 </body>
