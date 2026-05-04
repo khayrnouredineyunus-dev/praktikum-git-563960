@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Belajar Web Modern</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Web</title>
+    <style>
+        /* Sedikit CSS agar tampilannya terlihat seperti navbar */
+        nav {
+            background-color: #333;
+            padding: 1rem;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Membuat menu berjejer ke samping */
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Bagian Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
     <h1>Selamat Datang</h1>
-    <p>Ini adalah tampilan website dengan navbar yang lebih modern.</p>
+    <p>Ini adalah website sederhana saya.</p>
+
 </body>
 </html>
