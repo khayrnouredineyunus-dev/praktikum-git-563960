@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar Web Modern</title>
+    <title>Website Modern Saya</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -27,6 +27,7 @@
             align-items: center;
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 20px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: sticky;
@@ -40,6 +41,7 @@
             background: linear-gradient(to right, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
         }
 
         nav ul {
@@ -51,90 +53,132 @@
         nav a {
             color: #94a3b8;
             text-decoration: none;
+            font-size: 0.95rem;
             transition: 0.3s;
+            position: relative;
         }
 
         nav a:hover {
             color: white;
         }
 
-        /* --- HERO SECTION (NEW FEAT) --- */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            bottom: -5px;
+            left: 0;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO SECTION --- */
         .hero {
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+            
+            /* Background Image dengan Overlay Gelap */
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), 
+                              url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efek Parallax */
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem); /* Ukuran teks responsif */
             margin-bottom: 20px;
-            animation: fadeIn 1.5s ease;
+            font-weight: 600;
+            animation: fadeInDown 1s ease;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            max-width: 600px;
-            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin-bottom: 35px;
+            animation: fadeInUp 1s ease 0.3s;
+            animation-fill-mode: both;
         }
 
         .btn {
-            padding: 12px 30px;
+            display: inline-block;
+            padding: 14px 35px;
             background: #38bdf8;
             color: #0f172a;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             font-weight: 600;
             transition: 0.3s;
-            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.5);
+            animation: fadeInUp 1s ease 0.6s;
+            animation-fill-mode: both;
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.4);
+            background: #7dd3fc;
+            box-shadow: 0 20px 30px -10px rgba(56, 189, 248, 0.6);
         }
 
-        /* --- FOOTER (NEW FEAT) --- */
+        /* --- FOOTER --- */
         footer {
-            padding: 40px 0;
+            padding: 50px 0;
             text-align: center;
             background: #020617;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: #64748b;
-            font-size: 0.9rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        /* --- ANIMASI --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsif untuk Mobile */
+        @media (max-width: 768px) {
+            nav ul { display: none; } /* Sederhanakan menu untuk mobile */
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">TECHLAB</div>
+        <div class="logo">PORTFOLIO.</div>
         <ul>
             <li><a href="#">Beranda</a></li>
-            <li><a href="#about">Tentang</a></li>
-            <li><a href="#">Proyek</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Layanan</a></li>
             <li><a href="#">Kontak</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>Bangun Masa Depan</h1>
-        <p>Belajar coding dengan cara yang menyenangkan dan membangun portofolio yang luar biasa bersama kami.</p>
-        <a href="#about" class="btn">Mulai Belajar</a>
-    </section>
+    <header class="hero">
+        <h1>Desain Masa Depan</h1>
+        <p>Kombinasi antara estetika dan fungsionalitas untuk membangun pengalaman digital yang tak terlupakan.</p>
+        <a href="#explore" class="btn">Jelajahi Proyek</a>
+    </header>
 
     <footer>
-        <p>&copy; 2026 TechLab. Dibuat dengan semangat belajar.</p>
+        <p>&copy; 2026 BrandKamu. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">Build with HTML & CSS</p>
     </footer>
 
 </body>
